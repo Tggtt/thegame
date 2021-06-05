@@ -14,6 +14,9 @@ import openfl.display.Sprite;
 import openfl.display.Bitmap;
 import openfl.Assets;
 import openfl.events.MouseEvent;
+import openfl.display.SimpleButton;
+import openfl.text.TextField;
+import openfl.text.TextFieldAutoSize;
 
 import openfl.Vector;
 import openfl.geom.Matrix;
@@ -24,6 +27,7 @@ class Main extends Sprite
 	private var tile:Null<AJTile>;
 	private var bookOpen:Null<Sprite>;
 	private var bookClosed:Null<Sprite>;
+	var buttonEnter : Null<SimpleButton>;
 	
 	private var cacheOffsetX:Float;
 	private var cacheOffsetY:Float;
@@ -33,6 +37,64 @@ class Main extends Sprite
 	{
 		
 		super();
+		this.showMain();
+	}
+
+	private inline function showMain()
+	{
+		this.stage.color = 0x000000;
+		this.buttonEnter = createButton("If I can't fight them, might as well join them!");
+
+		this.buttonEnter.x= Std.int((this.stage.stageWidth - this.buttonEnter.width)/2);
+		this.buttonEnter.y= Std.int(this.stage.stageHeight - 50);
+		this.buttonEnter.useHandCursor = true;
+
+		this.addChild(this.buttonEnter);
+		this.buttonEnter.addEventListener(MouseEvent.CLICK, buttonEnter_onMouseClick);
+	}
+
+	private inline function clearMain()
+	{
+		this.removeChild(this.buttonEnter);
+		this.buttonEnter = null;
+	}
+
+	private inline function createButton(buttonText : String) : SimpleButton
+	{
+		var text : String = ('<font size="32">' + buttonText + "</font>");
+		var buttonUp: TextField = new TextField();
+		buttonUp.autoSize = (TextFieldAutoSize.LEFT);
+		buttonUp.htmlText = text;
+		buttonUp.background = true;
+		buttonUp.backgroundColor = 0xD0D0D0;
+		buttonUp.border = true;
+
+		var buttonOver: TextField = new TextField();
+		buttonOver.autoSize = (TextFieldAutoSize.LEFT);
+		buttonOver.htmlText = text;
+		buttonOver.background = true;
+		buttonOver.backgroundColor = 0xE0E0E0;
+		buttonOver.border = true;
+
+		var buttonDown: TextField = new TextField();
+		buttonDown.autoSize = (TextFieldAutoSize.LEFT);
+		buttonDown.htmlText = text;
+		buttonDown.background = true;
+		buttonDown.backgroundColor = 0x505050;
+		buttonDown.border = true;
+
+		var buttonHit: TextField = new TextField();
+		buttonHit.autoSize = (TextFieldAutoSize.LEFT);
+		buttonHit.htmlText = text;
+		buttonHit.background = true;
+		buttonHit.backgroundColor = 0xF0F0F0;
+		buttonHit.border = true;
+
+		return (new SimpleButton(buttonUp,buttonOver,buttonDown,buttonHit));
+	}
+
+	private inline function placeTiles()
+	{ 
 
 		bookOpen = new Sprite();
 		bookOpen.addChild(new Bitmap (Assets.getBitmapData ("assets/ajmb2.png")));
@@ -71,15 +133,26 @@ class Main extends Sprite
 		
 	}	
 	
-	private function tile_onMouseDown (event:MouseEvent):Void
+	
+	
+	private function buttonEnter_onMouseClick (event:MouseEvent):Void
 	{
-	private function bookOpen_onMouseClick (event:MouseEvent):Void
+		this.clearMain();
+		this.placeTiles();
+	}
+
+	private function bookOpen_onMouseClick(event:MouseEvent):Void
 	{
 		this.removeChild(bookOpen);
 	}
+	
+	private function bookClosed_onMouseClick(event:MouseEvent):Void
 	{
 		this.addChild(bookOpen);
 	}
+	
+	private function tile_onMouseDown (event:MouseEvent):Void
+	{
 		if (Std.isOfType(event.currentTarget, AJTile))
 		{
 			tile = cast(event.currentTarget, AJTile);
