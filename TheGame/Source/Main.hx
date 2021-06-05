@@ -34,7 +34,7 @@ class Main extends Sprite
 	private static var warningText: Array<String> = ["This game is known to cause extreme addiction.",
 			"We are not responsible if it causes aggressivity, rage, insomnia,",
 			" loss of friends or lack of interest on other activities.",
-			"Do not ask of help if someone you know",
+			"Do not ask for help if someone you know",
 			" becomes a zombie due to this game.",
 			" ",
 			"Please proceed with caution!",
