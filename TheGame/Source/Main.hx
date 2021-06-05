@@ -29,6 +29,7 @@ class Main extends Sprite
 	private var bookClosed:Null<Sprite>;
 	private var buttonEnter : Null<SimpleButton>;
 	private var header: Null<TextField>;
+	private var message: Null<TextField>;
 
 	private static var warningText: Array<String> = ["This game is known to cause extreme addiction.",
 			"We are not responsible if it causes aggressivity, rage, insomnia,",
@@ -72,6 +73,13 @@ class Main extends Sprite
 		this.header.y =  10;
 		this.addChild(this.header);
 
+		this.message = new TextField();
+		this.message.autoSize = (TextFieldAutoSize.CENTER);
+		this.message.htmlText = ("<font size=\"32\" color=\"#50F050\">You've come to join us, that is good.</font>");
+		this.message.x = Std.int((this.stage.stageWidth - this.message.width)/2);
+		this.message.y = this.buttonEnter.y - this.buttonEnter.height - 10;
+		this.addChild(this.message);
+
 		// separated because using <p> misaligns....
 		{
 			this.warningTextField = new Array<TextField>();
@@ -97,6 +105,8 @@ class Main extends Sprite
 		this.buttonEnter = null;
 		this.removeChild(this.header);
 		this.header = null;
+		this.removeChild(this.message);
+		this.message = null;
 		for (field in this.warningTextField)
 		{
 			this.removeChild(field);
