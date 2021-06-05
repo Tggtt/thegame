@@ -140,6 +140,8 @@ class Main extends Sprite
 
 	private inline function placeTiles()
 	{ 
+		this.stage.color = 0x7e868f;
+		this.addChild(new Bitmap (Assets.getBitmapData ("assets/ajbm.png")));
 
 		bookOpen = new Sprite();
 		bookOpen.addChild(new Bitmap (Assets.getBitmapData ("assets/ajmb2.png")));
@@ -173,7 +175,7 @@ class Main extends Sprite
 			}
 		}
 
-		this.stage.color = 0x7e868f;
+		
 	
 		
 	}	
