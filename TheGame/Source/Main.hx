@@ -169,7 +169,7 @@ class Main extends Sprite
 			{
 				tile = new AJTile(i, (Math.random() >= 0.50));
 				tile.x = 50 + (i+j)*60;
-				tile.y = 400;
+				tile.y = this.stage.stageHeight - tile.height + 20;
 				tile.buttonMode = true;
 				this.addChild (tile);
 				tile.addEventListener (MouseEvent.MOUSE_DOWN, tile_onMouseDown);
