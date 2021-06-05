@@ -236,8 +236,8 @@ class Main extends Sprite
 	private function stage_onMouseUp (event:MouseEvent):Void
 	{
 		{
-			var xPosition : Float =  tileWidth * Std.int(tile.x/tileWidth);
-			var yPosition : Float =  tileHeight * Std.int(tile.y/tileHeight);
+			var xPosition : Float =  tileWidth * Math.round(tile.x/tileWidth);
+			var yPosition : Float =  tileHeight * Math.round(tile.y/tileHeight);
 
 			if ((xPosition >= 0) && (xPosition < this.stage.stageWidth) && (yPosition >=0) && (yPosition < this.stage.stageHeight))
 				Actuate.tween (tile, 1, { x: xPosition, y: yPosition } );
