@@ -27,8 +27,17 @@ class Main extends Sprite
 	private var tile:Null<AJTile>;
 	private var bookOpen:Null<Sprite>;
 	private var bookClosed:Null<Sprite>;
-	var buttonEnter : Null<SimpleButton>;
-	
+	private var buttonEnter : Null<SimpleButton>;
+	private var header: Null<TextField>;
+
+	private static var warningText: Array<String> = ["This game is known to cause extreme addiction.",
+			"We are not responsible if it causes aggressivity, rage, insomnia,",
+			" loss of friends or lack of interest on other activities.",
+			"Do not ask of help if someone you know",
+			" becomes a zombie due to this game.",
+			" ",
+			"Please proceed with caution! You have been warned!"];
+	private var warningTextField: Null<Array<TextField>>;
 	private var cacheOffsetX:Float;
 	private var cacheOffsetY:Float;
 	
@@ -51,12 +60,47 @@ class Main extends Sprite
 
 		this.addChild(this.buttonEnter);
 		this.buttonEnter.addEventListener(MouseEvent.CLICK, buttonEnter_onMouseClick);
+
+		this.header = new TextField();
+		this.header.autoSize = (TextFieldAutoSize.CENTER);
+		this.header.htmlText = ('<font size="48">' + "WARNING" + "</font>");
+		this.header.background = true;
+		this.header.backgroundColor = 0xF00000;
+		this.header.border = false;
+		this.header.x =  Std.int((this.stage.stageWidth - this.header.width)/2);
+		this.header.y =  10;
+		this.addChild(this.header);
+
+		// separated because using <p> misaligns....
+		{
+			this.warningTextField = new Array<TextField>();
+			var yPosition : Float = this.header.y + this.header.height + 20;
+			for (text in Main.warningText)
+			{
+				
+				var body : TextField = new TextField();
+				body.autoSize = (TextFieldAutoSize.CENTER);
+				body.htmlText = ('<font size="20" color="#F0F0F0">'+text+'</font>');
+				body.x =  Std.int((this.stage.stageWidth - body.width)/2);
+				body.y =  yPosition;
+				this.warningTextField.push(body);
+				this.addChild(body);
+				yPosition += body.height;
+			}
+		}
 	}
 
 	private inline function clearMain()
 	{
 		this.removeChild(this.buttonEnter);
 		this.buttonEnter = null;
+		this.removeChild(this.header);
+		this.header = null;
+		for (field in this.warningTextField)
+		{
+			this.removeChild(field);
+		}
+		this.warningTextField = null;
 	}
 
 	private inline function createButton(buttonText : String) : SimpleButton
@@ -65,9 +109,9 @@ class Main extends Sprite
 		var buttonUp: TextField = new TextField();
 		buttonUp.autoSize = (TextFieldAutoSize.LEFT);
 		buttonUp.htmlText = text;
+		buttonUp.border = true;
 		buttonUp.background = true;
 		buttonUp.backgroundColor = 0xD0D0D0;
-		buttonUp.border = true;
 
 		var buttonOver: TextField = new TextField();
 		buttonOver.autoSize = (TextFieldAutoSize.LEFT);
