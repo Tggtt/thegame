@@ -36,7 +36,8 @@ class Main extends Sprite
 			"Do not ask of help if someone you know",
 			" becomes a zombie due to this game.",
 			" ",
-			"Please proceed with caution! You have been warned!"];
+			"Please proceed with caution!",
+			"You have been warned!"];
 	private var warningTextField: Null<Array<TextField>>;
 	private var cacheOffsetX:Float;
 	private var cacheOffsetY:Float;
