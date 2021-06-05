@@ -50,16 +50,20 @@ class Main extends Sprite
 		this.addChild (bookClosed);
 		bookClosed.addEventListener(MouseEvent.CLICK, bookClosed_onMouseClick);
 
+		
 		for (i in 1...8)
 		{
-			tile = new AJTile(i);
-			tile.x = 100 + i*60;
-			tile.y = 300;
-			tile.buttonMode = true;
-			this.addChild (tile);
-			tile.addEventListener (MouseEvent.MOUSE_DOWN, tile_onMouseDown);
-			tile.addEventListener (MouseEvent.MOUSE_WHEEL, tile_onMouseAlt);
-			tile.addEventListener (MouseEvent.RIGHT_CLICK, tile_onMouseAlt);
+			for (j in 0...2)
+			{
+				tile = new AJTile(i, (Math.random() >= 0.50));
+				tile.x = 50 + (i+j)*60;
+				tile.y = 400;
+				tile.buttonMode = true;
+				this.addChild (tile);
+				tile.addEventListener (MouseEvent.MOUSE_DOWN, tile_onMouseDown);
+				tile.addEventListener (MouseEvent.MOUSE_WHEEL, tile_onMouseAlt);
+				tile.addEventListener (MouseEvent.RIGHT_CLICK, tile_onMouseAlt);
+			}
 		}
 
 		this.stage.color = 0x7e868f;
