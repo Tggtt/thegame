@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="The Game" package="org.openfl.samples.handlingmouseevents" version="1.0.0" company="Tggtt" />
+	<app main="Main" path="Export" file="TheGame" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+	
+	<assets path="Assets" rename="assets" />
+	
+</project>
