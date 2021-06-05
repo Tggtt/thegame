@@ -54,7 +54,7 @@ class Main extends Sprite
 	private inline function showMain()
 	{
 		this.stage.color = 0x000000;
-		this.buttonEnter = createButton("If I can't fight them, might as well join them!");
+		this.buttonEnter = createButton("I can't beat them, might as well join them!");
 
 		this.buttonEnter.x= Std.int((this.stage.stageWidth - this.buttonEnter.width)/2);
 		this.buttonEnter.y= Std.int(this.stage.stageHeight - 50);
