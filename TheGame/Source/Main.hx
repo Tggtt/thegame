@@ -31,11 +31,12 @@ class Main extends Sprite
 	private var header: Null<TextField>;
 	private var message: Null<TextField>;
 
-	private static var warningText: Array<String> = ["This game is known to cause extreme addiction.",
-			"We are not responsible if it causes aggressivity, rage, insomnia,",
-			" loss of friends or lack of interest on other activities.",
-			"Do not ask for help if someone you know",
-			" becomes a zombie due to this game.",
+	private static var warningText: Array<String> = ["This is not just a game, but a special class of game",
+			" that migrates from playground to playground.",
+			"This game is known to cause extreme addiction.",
+			"We are not responsible if after playing you can't eat, sleep",
+			"  or go to the bathroom without thinking of the game.",
+			"Do not ask for help if someone you know becomes a game zombie.",
 			" ",
 			"Please proceed with caution!",
 			"You have been warned!"];
