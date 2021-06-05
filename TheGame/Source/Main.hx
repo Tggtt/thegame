@@ -11,6 +11,8 @@ import motion.Actuate;
 import openfl.display.GraphicsBitmapFill;
 import openfl.display.IGraphicsData;
 import openfl.display.Sprite;
+import openfl.display.Bitmap;
+import openfl.Assets;
 import openfl.events.MouseEvent;
 
 import openfl.Vector;
@@ -20,6 +22,8 @@ class Main extends Sprite
 {	
 	
 	private var tile:Null<AJTile>;
+	private var bookOpen:Null<Sprite>;
+	private var bookClosed:Null<Sprite>;
 	
 	private var cacheOffsetX:Float;
 	private var cacheOffsetY:Float;
@@ -29,25 +33,49 @@ class Main extends Sprite
 	{
 		
 		super();
-		
+
+		bookOpen = new Sprite();
+		bookOpen.addChild(new Bitmap (Assets.getBitmapData ("assets/ajmb2.png")));
+		bookOpen.x = (this.stage.stageWidth - bookOpen.width) / 2;
+		bookOpen.y = (this.stage.stageHeight - bookOpen.height) / 2;
+		bookOpen.buttonMode = true;
+		// do not add this child.
+		bookOpen.addEventListener(MouseEvent.CLICK, bookOpen_onMouseClick);
+
+		bookClosed = new Sprite();
+		bookClosed.addChild(new Bitmap (Assets.getBitmapData ("assets/ajmb1.png")));
+		bookClosed.x = this.stage.stageWidth - bookClosed.width - 10;
+		bookClosed.y = this.stage.stageHeight - bookClosed.height - 10;
+		bookClosed.buttonMode = true;
+		this.addChild (bookClosed);
+		bookClosed.addEventListener(MouseEvent.CLICK, bookClosed_onMouseClick);
+
 		for (i in 1...8)
 		{
 			tile = new AJTile(i);
 			tile.x = 100 + i*60;
 			tile.y = 300;
 			tile.buttonMode = true;
-			addChild (tile);
+			this.addChild (tile);
 			tile.addEventListener (MouseEvent.MOUSE_DOWN, tile_onMouseDown);
 			tile.addEventListener (MouseEvent.MOUSE_WHEEL, tile_onMouseAlt);
 			tile.addEventListener (MouseEvent.RIGHT_CLICK, tile_onMouseAlt);
-		}		
+		}
 
 		this.stage.color = 0x7e868f;
+	
 		
-	}
+	}	
 	
 	private function tile_onMouseDown (event:MouseEvent):Void
 	{
+	private function bookOpen_onMouseClick (event:MouseEvent):Void
+	{
+		this.removeChild(bookOpen);
+	}
+	{
+		this.addChild(bookOpen);
+	}
 		if (Std.isOfType(event.currentTarget, AJTile))
 		{
 			tile = cast(event.currentTarget, AJTile);
