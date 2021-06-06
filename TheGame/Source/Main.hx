@@ -55,7 +55,7 @@ class Main extends Sprite
 	private inline function showMain()
 	{
 		this.stage.color = 0x000000;
-		this.buttonEnter = createButton("I can't beat them, might as well join them!");
+		this.buttonEnter = createButton("I can't beat them, might as well join them!", "You will play! You will play! You will play!");
 
 		this.buttonEnter.x= Std.int((this.stage.stageWidth - this.buttonEnter.width)/2);
 		this.buttonEnter.y= Std.int(this.stage.stageHeight - 50);
@@ -115,7 +115,7 @@ class Main extends Sprite
 		this.warningTextField = null;
 	}
 
-	private inline function createButton(buttonText : String) : SimpleButton
+	private inline function createButton(buttonText : String, downText : String) : SimpleButton
 	{
 		var text : String = ('<font size="32">' + buttonText + "</font>");
 		var buttonUp: TextField = new TextField();
@@ -133,11 +133,12 @@ class Main extends Sprite
 		buttonOver.border = true;
 
 		var buttonDown: TextField = new TextField();
-		buttonDown.autoSize = (TextFieldAutoSize.LEFT);
-		buttonDown.htmlText = text;
+		buttonDown.htmlText = ('<font size="30">&nbsp;&nbsp;&nbsp;' + downText + "&nbsp;&nbsp;&nbsp;</font>");
 		buttonDown.background = true;
 		buttonDown.backgroundColor = 0x505050;
 		buttonDown.border = true;
+		buttonDown.width = buttonUp.width;
+		buttonDown.height = buttonUp.height;
 
 		var buttonHit: TextField = new TextField();
 		buttonHit.autoSize = (TextFieldAutoSize.LEFT);
@@ -179,7 +180,7 @@ class Main extends Sprite
 			for (j in 1...3)
 			{
 				tile = new AJTile(i, (Math.random() >= 0.50));
-				tile.x = -10 + (i+j)*60;
+				tile.x = (i+j)*60 - 10;
 				tile.y = this.stage.stageHeight - tile.height + 20;
 				tile.buttonMode = true;
 				this.addChild (tile);
