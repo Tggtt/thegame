@@ -133,7 +133,8 @@ class Main extends Sprite
 		buttonOver.border = true;
 
 		var buttonDown: TextField = new TextField();
-		buttonDown.htmlText = ('<font size="30">&nbsp;&nbsp;&nbsp;' + downText + "&nbsp;&nbsp;&nbsp;</font>");
+		buttonDown.autoSize = (TextFieldAutoSize.CENTER);
+		buttonDown.htmlText = ('<font size="30">' + downText + "</font>");
 		buttonDown.background = true;
 		buttonDown.backgroundColor = 0x505050;
 		buttonDown.border = true;
