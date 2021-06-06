@@ -176,10 +176,10 @@ class Main extends Sprite
 		
 		for (i in 1...8)
 		{
-			for (j in 0...2)
+			for (j in 1...3)
 			{
 				tile = new AJTile(i, (Math.random() >= 0.50));
-				tile.x = 50 + (i+j)*60;
+				tile.x = -10 + (i+j)*60;
 				tile.y = this.stage.stageHeight - tile.height + 20;
 				tile.buttonMode = true;
 				this.addChild (tile);
