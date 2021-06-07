@@ -19,6 +19,7 @@ Use Haxelib to install Lime and OpenFL.
 
 Afterwards, change directory to the repository root and run haxelib to build.
 > haxelib run openfl build TheGame html5
+
 > haxelib run openfl deploy TheGame html5
 
 Given that html5 is the desired platform. "neko" and "flash" should also work if you have the proper libraries installed. Other platforms were not tested.
