@@ -8,7 +8,7 @@ Ajimbo is a fictional game that appeared in Recess. No one knows how to play due
 
 You can run the public release build at: https://tggtt.github.io/TheGame/
 
-See more details on the release page: https://recess.fandom.com/wiki/User_blog:Tggtt/The_Game_is_Released!
+See more details on the release page: https://recess.fandom.com/wiki/User_blog:Tggtt/The_Game_is_Released%21
 
 ## Building The Game
 This is a Haxe project that uses Lime and OpenFL.
